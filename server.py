@@ -12,10 +12,7 @@ def handle_client(client_socket, addr):
                 print(f"received message from {addr}: {message}")
                 broadcast_message(client_socket, message)
                 save_message(addr, message)
-            else:
-                print(f"empty message fromm {addr}. ")
-                remove_client(client_socket)
-                break
+
 
 
 def broadcast_message(sender_socket, message):
