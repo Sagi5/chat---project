@@ -9,11 +9,11 @@ def handle_client(client_socket, addr):
     while True:
             message = client_socket.recv(1024).decode('utf-8')
             if message:
-                print(f"Received message from {addr}: {message}")
+                print(f"received message from {addr}: {message}")
                 broadcast_message(client_socket, message)
                 save_message(addr, message)
             else:
-                print(f"Empty message from {addr}. ")
+                print(f"empty message fromm {addr}. ")
                 remove_client(client_socket)
                 break
 
@@ -21,7 +21,7 @@ def handle_client(client_socket, addr):
 def broadcast_message(sender_socket, message):
     for client in clients:
         if client != sender_socket:
-                client.send(message.encode('utf-8'))
+            client.send(message.encode('utf-8'))
 
 
 def save_message(addr, message):
