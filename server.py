@@ -1,6 +1,7 @@
 import socket
 import threading
 import sqlite3
+from colorama import *
 
 clients = []
 
@@ -9,7 +10,7 @@ def handle_client(client_socket, addr):
     while True:
             message = client_socket.recv(1024).decode('utf-8')
             if message:
-                print(f"received message from {addr}: {message}")
+                print(Fore.RED + f"received message from {Fore.GREEN+addr}: {Fore.BLUE + message}")
                 broadcast_message(client_socket, message)
                 save_message(addr, message)
 
